@@ -1,0 +1,9 @@
+### Health Check - Test if the server is responding
+GET http://localhost:8080/
+
+Render.com Testing
+GET https://cse341-contacts-m7xh.onrender.com/
+
+GET https://cse341-contacts-m7xh.onrender.com/contacts
+
+GET https://cse341-contacts-m7xh.onrender.com/68b754f06cfc16d7c8ca94b6
