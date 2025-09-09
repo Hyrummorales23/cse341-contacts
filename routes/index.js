@@ -127,29 +127,7 @@ router.get('/contacts/:id', async (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             required:
- *               - firstName
- *               - lastName
- *               - email
- *               - favoriteColor
- *               - birthday
- *             properties:
- *               firstName:
- *                 type: string
- *                 example: John
- *               lastName:
- *                 type: string
- *                 example: Doe
- *               email:
- *                 type: string
- *                 example: john.doe@example.com
- *               favoriteColor:
- *                 type: string
- *                 example: Blue
- *               birthday:
- *                 type: string
- *                 example: 1990-01-01
+ *             $ref: '#/components/schemas/Contact'
  *     responses:
  *       201:
  *         description: Contact created successfully
