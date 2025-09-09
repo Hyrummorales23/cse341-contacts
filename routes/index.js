@@ -127,7 +127,7 @@ router.get('/contacts/:id', async (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/definitions/Contact'
+ *             $ref: '#/components/schemas/Contact'
  *     responses:
  *       201:
  *         description: Contact created successfully
@@ -181,7 +181,7 @@ router.post('/contacts', async (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/definitions/Contact'
+ *             $ref: '#/components/schemas/Contact'
  *     responses:
  *       200:
  *         description: Contact updated successfully
