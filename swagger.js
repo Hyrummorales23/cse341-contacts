@@ -9,6 +9,9 @@ const doc = {
   },
   host: 'cse341-contacts-m7xh.onrender.com',
   schemes: ['https'],
+  basePath: '/',
+  consumes: ['application/json'],
+  produces: ['application/json'],
   definitions: {
     Contact: {
       type: 'object',
@@ -30,6 +33,71 @@ const doc = {
         email: { type: 'string', example: 'john.doe@example.com' },
         favoriteColor: { type: 'string', example: 'Blue' },
         birthday: { type: 'string', example: '1990-01-01' }
+      }
+    }
+  },
+  paths: {
+    '/contacts': {
+      post: {
+        summary: 'Create a new contact',
+        tags: ['Contacts'],
+        parameters: [
+          {
+            name: 'body',
+            in: 'body',
+            required: true,
+            schema: {
+              $ref: '#/definitions/Contact'
+            }
+          }
+        ],
+        responses: {
+          201: {
+            description: 'Contact created successfully',
+            schema: {
+              type: 'object',
+              properties: {
+                insertedId: {
+                  type: 'string',
+                  example: '507f1f77bcf86cd799439011'
+                }
+              }
+            }
+          },
+          400: { description: 'Missing required fields' },
+          500: { description: 'Internal server error' },
+          503: { description: 'Service Unavailable' }
+        }
+      }
+    },
+    '/contacts/{id}': {
+      put: {
+        summary: 'Update a contact',
+        tags: ['Contacts'],
+        parameters: [
+          {
+            name: 'id',
+            in: 'path',
+            required: true,
+            type: 'string',
+            description: 'MongoDB ObjectId of the contact to update'
+          },
+          {
+            name: 'body',
+            in: 'body',
+            required: true,
+            schema: {
+              $ref: '#/definitions/Contact'
+            }
+          }
+        ],
+        responses: {
+          200: { description: 'Contact updated successfully' },
+          400: { description: 'Invalid ID format' },
+          404: { description: 'Contact not found' },
+          500: { description: 'Internal server error' },
+          503: { description: 'Service Unavailable' }
+        }
       }
     }
   }
