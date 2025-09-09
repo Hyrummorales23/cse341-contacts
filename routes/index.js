@@ -162,33 +162,30 @@ router.post('/contacts', async (req, res) => {
   }
 });
 
-// PUT - Update a contact
+// POST - Create a new contact (Swagger 2.0 version)
 /**
  * @swagger
- * /contacts/{id}:
- *   put:
- *     summary: Update a contact
+ * /contacts:
+ *   post:
+ *     summary: Create a new contact
  *     tags: [Contacts]
  *     parameters:
- *       - in: path
- *         name: id
+ *       - in: body
+ *         name: body
  *         required: true
  *         schema:
- *           type: string
- *         description: MongoDB ObjectId of the contact to update
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Contact'
+ *           $ref: '#/definitions/Contact'
  *     responses:
- *       200:
- *         description: Contact updated successfully
- *       404:
- *         description: Contact not found
+ *       201:
+ *         description: Contact created successfully
+ *         schema:
+ *           type: object
+ *           properties:
+ *             insertedId:
+ *               type: string
+ *               example: "507f1f77bcf86cd799439011"
  *       400:
- *         description: Invalid ID format
+ *         description: Missing required fields
  *       500:
  *         description: Internal server error
  */

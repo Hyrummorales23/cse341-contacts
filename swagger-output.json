@@ -1,14 +1,14 @@
 {
-  "openapi": "3.0.0",
+  "swagger": "2.0",
   "info": {
     "title": "Contacts API",
     "description": "API for managing contacts information",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://cse341-contacts-m7xh.onrender.com/"
-    }
+  "host": "cse341-contacts-m7xh.onrender.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
   ],
   "paths": {
     "/": {
@@ -62,9 +62,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -92,9 +90,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -122,9 +118,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           }
         ],
         "responses": {
@@ -147,186 +141,184 @@
       }
     }
   },
-  "components": {
-    "schemas": {
-      "Contact": {
-        "type": "object",
+  "definitions": {
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
+        "required": {
+          "type": "array",
+          "example": [
+            "firstName",
+            "lastName",
+            "email",
+            "favoriteColor",
+            "birthday"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
         "properties": {
-          "type": {
-            "type": "string",
-            "example": "object"
-          },
-          "required": {
-            "type": "array",
-            "example": [
-              "firstName",
-              "lastName",
-              "email",
-              "favoriteColor",
-              "birthday"
-            ],
-            "items": {
-              "type": "string"
-            }
-          },
+          "type": "object",
           "properties": {
-            "type": "object",
-            "properties": {
-              "firstName": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "John"
-                  }
+            "firstName": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "John"
                 }
-              },
-              "lastName": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "Doe"
-                  }
+              }
+            },
+            "lastName": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Doe"
                 }
-              },
-              "email": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "john.doe@example.com"
-                  }
+              }
+            },
+            "email": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "john.doe@example.com"
                 }
-              },
-              "favoriteColor": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "Blue"
-                  }
+              }
+            },
+            "favoriteColor": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Blue"
                 }
-              },
-              "birthday": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "1990-01-01"
-                  }
+              }
+            },
+            "birthday": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "1990-01-01"
                 }
               }
             }
           }
         }
-      },
-      "ContactResponse": {
-        "type": "object",
+      }
+    },
+    "ContactResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
         "properties": {
-          "type": {
-            "type": "string",
-            "example": "object"
-          },
+          "type": "object",
           "properties": {
-            "type": "object",
-            "properties": {
-              "_id": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "507f1f77bcf86cd799439011"
-                  }
+            "_id": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "507f1f77bcf86cd799439011"
                 }
-              },
-              "firstName": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "John"
-                  }
+              }
+            },
+            "firstName": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "John"
                 }
-              },
-              "lastName": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "Doe"
-                  }
+              }
+            },
+            "lastName": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Doe"
                 }
-              },
-              "email": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "john.doe@example.com"
-                  }
+              }
+            },
+            "email": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "john.doe@example.com"
                 }
-              },
-              "favoriteColor": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "Blue"
-                  }
+              }
+            },
+            "favoriteColor": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Blue"
                 }
-              },
-              "birthday": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  },
-                  "example": {
-                    "type": "string",
-                    "example": "1990-01-01"
-                  }
+              }
+            },
+            "birthday": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "1990-01-01"
                 }
               }
             }
