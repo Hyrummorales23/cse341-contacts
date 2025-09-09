@@ -115,53 +115,6 @@ router.get('/contacts/:id', async (req, res) => {
   }
 });
 
-// POST - Create a new contact
-/**
- * @swagger
- * /contacts:
- *   post:
- *     summary: Create a new contact
- *     tags: [Contacts]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Contact'
- *     responses:
- *       201:
- *         description: Contact created successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 insertedId:
- *                   type: string
- *                   example: "507f1f77bcf86cd799439011"
- *       400:
- *         description: Missing required fields
- *       500:
- *         description: Internal server error
- */
-router.post('/contacts', async (req, res) => {
-  if (!req.db) {
-    return res.status(503).json({ error: 'Database not connected. Please try again later.' });
-  }
-
-  try {
-    const insertedId = await Contact.createContact(req.db, req.body);
-    res.status(201).json({ insertedId });
-  } catch (error) {
-    console.error('Error in POST /contacts:', error);
-    if (error.message.includes('Missing required field')) {
-      res.status(400).json({ error: error.message });
-    } else {
-      res.status(500).json({ error: error.message });
-    }
-  }
-});
-
 // POST - Create a new contact (Swagger 2.0 version)
 /**
  * @swagger
@@ -186,6 +139,54 @@ router.post('/contacts', async (req, res) => {
  *               example: "507f1f77bcf86cd799439011"
  *       400:
  *         description: Missing required fields
+ *       500:
+ *         description: Internal server error
+ */
+router.post('/contacts', async (req, res) => {
+  if (!req.db) {
+    return res.status(503).json({ error: 'Database not connected. Please try again later.' });
+  }
+
+  try {
+    const insertedId = await Contact.createContact(req.db, req.body);
+    res.status(201).json({ insertedId });
+  } catch (error) {
+    console.error('Error in POST /contacts:', error);
+    if (error.message.includes('Missing required field')) {
+      res.status(400).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+// PUT - Update a contact
+/**
+ * @swagger
+ * /contacts/{id}:
+ *   put:
+ *     summary: Update a contact
+ *     tags: [Contacts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: MongoDB ObjectId of the contact to update
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/definitions/Contact'
+ *     responses:
+ *       200:
+ *         description: Contact updated successfully
+ *       404:
+ *         description: Contact not found
+ *       400:
+ *         description: Invalid ID format
  *       500:
  *         description: Internal server error
  */
