@@ -127,24 +127,7 @@ router.get('/contacts/:id', async (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             required:
- *               - firstName
- *               - lastName
- *               - email
- *               - favoriteColor
- *               - birthday
- *             properties:
- *               firstName:
- *                 type: string
- *               lastName:
- *                 type: string
- *               email:
- *                 type: string
- *               favoriteColor:
- *                 type: string
- *               birthday:
- *                 type: string
+ *             $ref: '#/definitions/Contact'
  *     responses:
  *       201:
  *         description: Contact created successfully
@@ -155,6 +138,7 @@ router.get('/contacts/:id', async (req, res) => {
  *               properties:
  *                 insertedId:
  *                   type: string
+ *                   example: "507f1f77bcf86cd799439011"
  *       400:
  *         description: Missing required fields
  *       500:
@@ -197,18 +181,7 @@ router.post('/contacts', async (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               firstName:
- *                 type: string
- *               lastName:
- *                 type: string
- *               email:
- *                 type: string
- *               favoriteColor:
- *                 type: string
- *               birthday:
- *                 type: string
+ *             $ref: '#/definitions/Contact'
  *     responses:
  *       200:
  *         description: Contact updated successfully
