@@ -1,9 +1,34 @@
 ### Health Check - Test if the server is responding
-GET http://localhost:8080/
-
-Render.com Testing
 GET https://cse341-contacts-m7xh.onrender.com/
 
+### Get ALL contacts
 GET https://cse341-contacts-m7xh.onrender.com/contacts
 
-GET https://cse341-contacts-m7xh.onrender.com/68b754f06cfc16d7c8ca94b6
+### Get a SINGLE contact by ID
+GET https://cse341-contacts-m7xh.onrender.com/contacts/68b754f06cfc16d7c8ca94b6
+
+### Create a NEW contact
+POST https://cse341-contacts-m7xh.onrender.com/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Test",
+  "lastName": "User",
+  "email": "test.user@example.com",
+  "favoriteColor": "Green",
+  "birthday": "1995-05-15"
+}
+
+### UPDATE a contact by ID
+PUT https://cse341-contacts-m7xh.onrender.com/contacts/68b754f06cfc16d7c8ca94b6
+Content-Type: application/json
+
+{
+  "firstName": "UpdatedFirstName"
+}
+
+### DELETE a contact by ID
+DELETE https://cse341-contacts-m7xh.onrender.com/contacts/68b754f06cfc16d7c8ca94b6
+
+### Swagger Documentation
+GET https://cse341-contacts-m7xh.onrender.com/api-docs
